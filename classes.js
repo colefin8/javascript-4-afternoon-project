@@ -99,7 +99,33 @@ class ProgressiveManager extends Manager{
     this.bonus = 0;
   }
   
+  hire(employee){
+    super.hire(employee)
+    this.updateTitle()
+  }
   
+  fire(employee){
+    this.bonus += 100
+    super.fire(employee)
+    this.updateTitle();
+  }
+
+  updateTitle(){
+    let employeeNumber = this.reports.length; 
+    if(employeeNumber <= 0){
+      this.title = 'Not a manager'
+    } else if (employeeNumber < 4){
+      this.title = 'Barely Manager'
+    } else if (employeeNumber < 11){
+      this.title = 'Mostly Manager'
+    } else if (employeeNumber < 51){
+      this.title = 'Manager'
+    } else if (employeeNumber < 101){
+      this.title = 'Manager Plus'
+    } else {
+      this.title = 'Bestest Manager'
+    }
+  }
 }
 
 
